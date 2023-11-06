@@ -108,7 +108,7 @@ class TrinoDialect(DefaultDialect):
             if not url.username:
                 raise ValueError("Username is required when specify password in connection URL")
             kwargs["http_scheme"] = "https"
-            kwargs["auth"] = BasicAuthentication(unquote_plus(url.username), unquote_plus(url.password))
+            kwargs["auth"] = BasicAuthentication(unquote_plus(url.username), url.password)
 
         if "access_token" in url.query:
             kwargs["http_scheme"] = "https"
